@@ -1,0 +1,17 @@
+[
+    {
+        "name":"iphone 12",
+        "price":8999.99,
+        "description":"this a laster iphone product",
+        "rating": 5,
+        "images": [{
+            "public_id":"",
+            "url":""
+        }],
+        "catagory": "Electronics",
+        "seller": "Amazon",
+        "stock": 3,
+        "numOfReviews" : 10,
+        "review": []
+    }
+]

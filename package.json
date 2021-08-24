@@ -1,0 +1,20 @@
+{
+  "name": "shopday",
+  "version": "1.0.0",
+  "description": "shopday is e-commerce site selling apple products",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node backend/server.js",
+    "dev": "SET NODE_END=DEVELOPMENT & nodemon backend/server",
+    "prod": "SET NODE_END=PRODUCTION & nodemon backend/server"
+  },
+  "author": "Fiona Fang",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.8",
+    "nodemon": "^2.0.12"
+  }
+}
