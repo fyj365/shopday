@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start" : "node backend/server.js",
-    "dev": "SET NODE_END=DEVELOPMENT & nodemon backend/server",
-    "prod": "SET NODE_END=PRODUCTION & nodemon backend/server",
+    "dev": "set NODE_ENV=DEVELOPMENT & nodemon backend/server",
+    "prod": "set NODE_ENV=PRODUCTION & nodemon backend/server",
     "seeder": "node backend/utils/seeder"
   },
   "author": "Fiona Fang",
