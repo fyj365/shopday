@@ -3,11 +3,11 @@ const connectDatabase = require('./config/database')
 const dotenv = require('dotenv')
 
 // handle uncaught exceptions
-process.on('uncaughtException', err => {
-    console.log(`ERROR: ${err.message}`)
-    console.log('shutting down due to uncaught exception')
-    process.exit(1)
-})
+// process.on('uncaughtException', err => {
+//     console.log(`ERROR: ${err.message}`)
+//     console.log('shutting down due to uncaught exception')
+//     process.exit(1)
+// })
 
 
 // setting up config file
