@@ -2,7 +2,9 @@ const Product = require('../models/product')
 
 const ErrorHandler = require('../utils/errorHandler');
 
-const CatchAsynErrors = require('../middlewares/catchAsynErrors')
+const CatchAsynErrors = require('../middlewares/catchAsynErrors');
+
+const APIFeatures = require('../utils/apiFeatures');
 
 // create new product => /api/v1/admin/product/new
 exports.newProduct = CatchAsynErrors (async (req, res, next) => {
@@ -14,11 +16,15 @@ exports.newProduct = CatchAsynErrors (async (req, res, next) => {
 })
 // get all products => /api/v1/products
 exports.getProducts = CatchAsynErrors(async (req, res, next) => {
-    const products = await Product.find();
+    const perPage = 2;
+    const productsTotal = await Product.countDocuments();
+    const apiFeatures = new APIFeatures(Product.find(), req.query).search().filter().paginaiton(perPage);
+    const products = await apiFeatures.query;
+ 
     res.status(200).json({
         success: true,
-        message: 'This route will show all products in database!',
         count: products.length,
+        totalProducts:productsTotal,
         products
     })
 })
