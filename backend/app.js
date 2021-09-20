@@ -15,10 +15,11 @@ app.use(cookieParser());
 //import all routes
 const products = require('./routes/product');
 const users = require('./routes/auth');
-
+const orders =require('./routes/order');
 
 app.use('/api/v1', products);
 app.use('/api/v1', users);
+app.use('/api/v1', orders);
 
 app.get('/api/v1', async function (req, res) {
     console.log('Cookies: ', req.cookies)
