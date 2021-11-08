@@ -15,7 +15,7 @@ exports.newProduct = CatchAsynErrors (async (req, res, next) => {
         product
     })
 })
-// get all products => /api/v1/products
+// get all products => /api/v1/products?page=1
 exports.getProducts = CatchAsynErrors(async (req, res, next) => {
     // return next(new ErrorHandler('My Error', 400))
     const perPage = 4;
@@ -27,6 +27,7 @@ exports.getProducts = CatchAsynErrors(async (req, res, next) => {
         success: true,
         count: products.length,
         totalProducts:productsTotal,
+        resPerPage: perPage,
         products
     })
 })
