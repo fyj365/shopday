@@ -36,7 +36,7 @@ const Login = ({history}) => {
         <Fragment>
             {loading ? <Loader/> : (
                 <Fragment>
-                    <MetaData titel={'Login'}/>
+                    <MetaData title={'Login'}/>
                     <div className="row wrapper"> 
                         <div className="col-10 col-lg-5">
                         <form className="shadow-lg" onSubmit={submitHandler}>

@@ -7,10 +7,10 @@ import Home from './components/Home'
 import ProductDetails from './components/product/ProductDetails'
 import Login from './components/user/Login'
 import Register from './components/user/Register'
+import Profile from './components/user/Profile'
 import { loadUser } from './actions/UserActions'
 import store from './store'
-
-
+import ProtectedRoute from './components/route/ProtectedRoute'
 function App() {
   useEffect(() => {
     store.dispatch(loadUser())
@@ -26,6 +26,7 @@ function App() {
           <Route path="/product/:id" component={ProductDetails} exact/>
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <ProtectedRoute path="/me" component={Profile} exact/> 
         </div>
         <Footer />
       </div>
