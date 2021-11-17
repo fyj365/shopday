@@ -9,14 +9,14 @@ class APIFeatures {
                 $regex: this.queryStr.keyword,
                 $options: 'i'
             }
-        } : {}          
+        } : {}    
         this.query = this.query.find({...keyword})
         return this;
     }
     filter() {
         const queryCopy = {...this.queryStr}
         //removing fields from the query
-        const removeFields = ['keywords', 'limit', 'page'];
+        const removeFields = ['keyword', 'limit', 'page'];
         removeFields.forEach(el => delete queryCopy[el]);
         this.query.find({...queryCopy});
         return this;
@@ -24,7 +24,6 @@ class APIFeatures {
     paginaiton(resPerpage) {
         const currentPage = Number(this.queryStr.page) || 1;
         const skip = resPerpage * (currentPage - 1);
-
         this.query = this.query.limit(resPerpage).skip(skip);
         return this;
     }
