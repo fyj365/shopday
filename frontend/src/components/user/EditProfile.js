@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert'
 import { loadUser } from '../../actions/UserActions'
 import { UPDATE_PROFILE_RESET} from '../../constants/userConstants'
+import MetaData from '../layout/MetaData';
 const EditProfile = ({ history }) => {
 
 
@@ -41,6 +42,7 @@ const EditProfile = ({ history }) => {
     }
     return (
         <Fragment>
+            <MetaData title={'Profile Update'}/>
              <div className="row wrapper">
                 <div className="col-10 col-lg-5">
                     <form className="shadow-lg" encType='multipart/form-data' onSubmit={submitHandler} >
