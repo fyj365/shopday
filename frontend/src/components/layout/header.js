@@ -33,7 +33,7 @@ const Header = () => {
                         </Link>
                         {user  ? 
                         <div className="ml-3 dropdown d-inline"> 
-                            <Link to="#!"className="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <Link to="#!"className="btn dropdown-toggle text-white mr-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span>{user && user.name}</span>
                             </Link>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">

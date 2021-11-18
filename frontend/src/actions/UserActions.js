@@ -10,6 +10,10 @@ import {
     LOAD_USER_FAIL,
     LOGOUT_SUCCESS,
     LOGOUT_FAIL,
+    UPDATE_PROFILE_REQUEST,
+    UPDATE_PROFILE_SUCCESS,
+    UPDATE_PROFILE_FAIL,
+    UPDATE_PROFILE_RESET,
     CLEAR_ERRORS
 
 } from '../constants/userConstants'
@@ -34,6 +38,7 @@ export const login = (email, password ) => async (dispatch) => {
 export const clearErrors = () => async (dispatch) => {
     dispatch({type: CLEAR_ERRORS})
 }
+// register user
 export const register = (name, email, password) => async (dispatch) => {
     try{
         dispatch({type: REGISTER_REQUEST})
@@ -66,6 +71,21 @@ export const logout = () => async (dispatch) => {
         const { data } = await axios.get('/api/v1/logout')
         dispatch({ type: LOGOUT_SUCCESS, payload: data.user })
     }catch(error){
-        dispatch({type: LOGIN_FAIL, payload: error.response.data.errMessage})
+        dispatch({type: LOGOUT_FAIL, payload: error.response.data.errMessage})
+    }
+}
+// update user
+export const updateProfile = (name, email, password) => async (dispatch) => {
+    try{
+        dispatch({type: UPDATE_PROFILE_REQUEST})
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+        const { data } = await axios.put('/api/v1/me/update', { name, email, password }, config)
+        dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.success })
+    }catch(error){
+        dispatch({type: UPDATE_PROFILE_FAIL, payload: error.response.data.errMessage})
     }
 }

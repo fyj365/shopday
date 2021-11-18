@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Loader from '../layout/Loader'
 import MetaData from '../layout/MetaData'
 import { useAlert } from 'react-alert'
 import {useDispatch, useSelector } from 'react-redux'
@@ -37,7 +36,7 @@ const Register = ({history}) => {
                 <MetaData title={"Register"}/>
             <div className="row wrapper">
             <div className="col-10 col-lg-5">
-            <form className="shadow-lg" encType='multipart/form-data' onSubmit={submitHandler} encType="multipart/form-data	">
+            <form className="shadow-lg" encType='multipart/form-data' onSubmit={submitHandler}>
                 <h1 className="mb-3">Register</h1>
     
               <div className="form-group">
