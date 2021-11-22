@@ -3,11 +3,25 @@ import { Fragment } from 'react'
 import {useDispatch, useSelector } from 'react-redux'
 import MetaData from '../layout/MetaData'
 import { Link } from 'react-router-dom'
+import {addItemToCart } from '../../actions/cartActions'
 
 const Cart = () => {
     const {cartItems} = useSelector(state => state.cart)
     let totalUnits = 0
     let estTotal = 0
+    const dispatch = useDispatch();
+    const increaseQty = (productId, qty, stock) => {
+        const newQty = qty + 1 ;
+        if(newQty <= stock) {
+            dispatch(addItemToCart(productId, newQty))
+        }
+    }
+    const decreaseQty = (productId, qty) => {
+        const newQty = qty - 1;
+        if (newQty > 0 ) {
+            dispatch(addItemToCart(productId, newQty))
+        }
+    }
     return (
         <Fragment>
             <MetaData title={'Cart'}/>
@@ -24,7 +38,7 @@ const Cart = () => {
                                 totalUnits = totalUnits + item.quantity
                                 estTotal = estTotal + item.quantity * item.price
                                  return(
-                                    <div className="cart-item" key={item.name}>
+                                    <div className="cart-item" key={item.product}>
                                       <hr />
 
                                     <div className="row">
@@ -43,10 +57,10 @@ const Cart = () => {
     
                                         <div className="col-4 col-lg-3 mt-4 mt-lg-0">
                                             <div className="stockCounter d-inline">
-                                                <span className="btn btn-danger minus">-</span>
+                                                <span className="btn btn-danger minus" onClick={() => decreaseQty(item.product, item.quantity)}>-</span>
                                                 <input type="number" className="form-control count d-inline" value={item.quantity} readOnly />
     
-                                                <span className="btn btn-primary plus">+</span>
+                                                <span className="btn btn-primary plus" onClick={() => increaseQty(item.product, item.quantity, item.stock)}>+</span>
                                             </div>
                                         </div>
     
