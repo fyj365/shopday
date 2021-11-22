@@ -8,7 +8,9 @@
     "start": "node backend/server.js",
     "dev": "set NODE_ENV=DEVELOPMENT & nodemon backend/server",
     "prod": "set NODE_ENV=PRODUCTION & nodemon backend/server",
-    "seeder": "node backend/utils/seeder"
+    "seeder": "node backend/utils/seeder",
+    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
+
   },
   "author": "Fiona Fang",
   "license": "ISC",
