@@ -17,7 +17,7 @@ const ForgetPassword = () => {
         if(success) {
             alert.success(message)
         }
-    })
+    },[dispatch, alert, error, success])
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(forgetPassword(email))

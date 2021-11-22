@@ -15,7 +15,7 @@ import EditProfile from './components/user/EditProfile'
 import UpdatePassword from './components/user/UpdatePassword'
 import ForgetPassword from './components/user/ForgetPassword'
 import ResetPassowrd from './components/user/ResetPassword'
-
+import Cart from './components/cart/Cart'
 function App() {
   useEffect(() => {
     store.dispatch(loadUser())
@@ -33,6 +33,7 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/password/forget" component={ForgetPassword} />
           <Route path="/password/reset/:resetToken" component={ResetPassowrd} />
+          <Route path="/cart" component={Cart} />
           <ProtectedRoute path="/me" component={Profile} exact/> 
           <ProtectedRoute path="/me/update" component={EditProfile} exact />
           <ProtectedRoute path="/password/update" component={UpdatePassword} />
