@@ -5,12 +5,13 @@ const cookieParser = require('cookie-parser');
 
 const errorMiddleware = require('./middlewares/error');
 
-const User = require('./models/user');
-const jwt = require("jsonwebtoken");
+const path = require('path')
 
 app.use(express.json());
 
 app.use(cookieParser());
+
+if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'backend/config/config.env' })
 
 //import all routes
 const products = require('./routes/product');
@@ -21,16 +22,13 @@ app.use('/api/v1', products);
 app.use('/api/v1', users);
 app.use('/api/v1', orders);
 
-app.get('/api/v1', async function (req, res) {
-    console.log('Cookies: ', req.cookies)
-    const token = req.cookies.jwtToken;
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decoded.id);
-    const user =  await User.findById(decoded.id);
-    console.log(user.name);
 
-    res.send('Hello World!')
-})
+if(process.env.NODE_ENV == 'PRODUCTION' ) {
+    app.get('/', (req, res) => {
+        app.use(express.static(path.join(__dirname, '../frontend/build')))
+        res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+    })
+}
 
 // Middleware to handle errors
 app.use(errorMiddleware)
