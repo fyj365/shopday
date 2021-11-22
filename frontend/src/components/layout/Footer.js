@@ -1,4 +1,4 @@
-const footer =  (props) => {
+const Footer =  () => {
     return (   
      <footer className="py-1">
       <p className="text-center  mt">
@@ -6,4 +6,4 @@ const footer =  (props) => {
       </p>
     </footer>);
   }
-  export default footer;
+  export default Footer;

@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import MetaData from '../layout/MetaData'
 import { useAlert } from 'react-alert'
 import {useDispatch, useSelector } from 'react-redux'
@@ -81,7 +80,7 @@ const Register = ({history}) => {
                               <img
                                   src=""
                                   className='rounded-circle'
-                                  alt='image'
+                                  alt="avatar"
                               />
                           </figure>
                       </div>

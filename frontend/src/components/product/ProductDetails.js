@@ -17,7 +17,7 @@ const ProductDetials = ({match}) => {
             alert.error(error);
             dispatch(clearErrors);
         }
-    }, [dispatch, alert, match.params.id])
+    }, [dispatch, alert, match.params.id, error])
 
 
     const increaseQty = () => {

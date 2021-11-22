@@ -1,5 +1,5 @@
 
-import react, {Fragment} from 'react'
+import {Fragment} from 'react'
 import { Link } from 'react-router-dom'
 import MetaData from '../layout/MetaData'
 import Loader from '../layout/Loader'

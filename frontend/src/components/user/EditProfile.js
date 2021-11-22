@@ -33,7 +33,7 @@ const EditProfile = ({ history }) => {
             dispatch({type: UPDATE_PROFILE_RESET })
         }
 
-    }, [dispatch, alert, isUpdated])
+    }, [dispatch, alert, isUpdated, error, history, user])
 
     const submitHandler  = (e) => {
         e.preventDefault();
@@ -98,7 +98,7 @@ const EditProfile = ({ history }) => {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn update-btn btn-block mt-4 mb-3" >Update</button>
+                        <button type="submit" className="btn update-btn btn-block mt-4 mb-3" disabled={loading?true:false}>Update</button>
                     </form>
                 </div>
             </div>

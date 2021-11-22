@@ -26,7 +26,7 @@ const Cart = () => {
     return (
         <Fragment>
             <MetaData title={'Cart'}/>
-            {cartItems.length == 0 ? <h1 className="text-center mt-5">Your cart is empty </h1> : 
+            {cartItems.length === 0 ? <h1 className="text-center mt-5">Your cart is empty </h1> : 
             <Fragment>
                     <h2 className="mt-5">Your Cart: <b>{ cartItems.length } item(s)</b></h2>
 

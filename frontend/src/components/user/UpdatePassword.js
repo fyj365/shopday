@@ -22,7 +22,7 @@ const UpdatePassword = ({history}) => {
             alert.success('Password updated successfully!')
             dispatch({type: UPDATE_PASSWORD_RESET})
         }
-    }, [dispatch, alert, error, isUpdated])
+    }, [dispatch, alert, error, isUpdated, history])
     
     const submitHandler = (e) => {
         e.preventDefault();
