@@ -13,7 +13,7 @@
     "dev": "set NODE_ENV=DEVELOPMENT & nodemon backend/server",
     "prod": "set NODE_ENV=PRODUCTION & nodemon backend/server",
     "seeder": "node backend/utils/seeder",
-    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false && npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false && cd frontend && npm install  && npm run build"
 
   },
   "author": "Fiona Fang",
