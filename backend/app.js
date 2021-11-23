@@ -21,7 +21,7 @@ const orders =require('./routes/order');
 console.log(path.join(__dirname, '../frontend/build'))
 console.log(path.resolve(__dirname, '../frontend/build/index.html'))
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
     app.use(express.static(path.join(__dirname, '../frontend/build')))
     // res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
     res.sendFile('/Users/fangyajing/Documents/Coding/NODEJS/SHOPDAY/frontend/build/index.html')
