@@ -1,23 +1,31 @@
-MongoDB, Express, Reactjs, Nodejs  - MERN stack
-set up environment --npm i express nodemon dotenv mongoose
+## MongoDB, Express, Reactjs, Nodejs
+
+set up the environment 
+## Installation 
+install dependencies
+--npm i express nodemon dotenv mongoose
+
 create backend connect to MongoDB
-add product resource - create product model
+add product resource - create a product model ...
 
-
-
-
-#ENV Variables
+## ENV Variables
 create a .env file in the backend folder 
-```
 
-#Install all dependencies(Frontend)
+## Install all dependencies(Frontend)
+
+```bash
 cd frontend
 npm i
 ```
-#Install Dependencies (Backend)
 
+## Install Dependencies (Backend)
+
+```bash
 npm i
 ```
-#Sead Database
+
+## Sead Database
+
+```bash
 npm run seeder
 ```
