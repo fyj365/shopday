@@ -4,8 +4,7 @@ import {useDispatch, useSelector } from 'react-redux'
 import MetaData from '../layout/MetaData'
 import { Link } from 'react-router-dom'
 import {addItemToCart, removeItemFromCart } from '../../actions/cartActions'
-
-const Cart = () => {
+const Cart = ({history}) => {
     const {cartItems} = useSelector(state => state.cart)
     const dispatch = useDispatch();
     const removeItemFromCartHandler = (id) => {
@@ -22,6 +21,9 @@ const Cart = () => {
         if (newQty > 0 ) {
             dispatch(addItemToCart(productId, newQty))
         }
+    }
+    const checkOut = () => {
+        history.push('/login?redirect=shipping')
     }
     return (
         <Fragment>
@@ -84,7 +86,7 @@ const Cart = () => {
                                 <p>Est. total: <span className="order-summary-values">${cartItems.reduce((acc, item)=> (acc + item.price * item.quantity), 0).toFixed(2)}</span></p>
                 
                                 <hr />
-                                <button id="checkout_btn" className="btn btn-primary btn-block">Check out</button>
+                                <button id="checkout_btn" className="btn btn-primary btn-block" onClick={checkOut}>Check out</button>
                             </div>
                         </div>
                     </div>

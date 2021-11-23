@@ -367,7 +367,9 @@ footer {
   font-family: sans-serif;
   overflow: auto;
 }
-
+.checkout-progress + .wrapper {
+  margin-top: 1rem;
+}
 .step {
   margin: 0;
   border: 0;

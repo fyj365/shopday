@@ -17,10 +17,12 @@ if (process.env.NODE_ENV === undefined) require('dotenv').config({ path: 'backen
 const products = require('./routes/product');
 const users = require('./routes/auth');
 const orders =require('./routes/order');
+const payment = require('./routes/payment');
 
 app.use('/api/v1', products);
 app.use('/api/v1', users);
 app.use('/api/v1', orders);
+app.use('/api/v1', payment)
 
 if(process.env.NODE_ENV == 'PRODUCTION' ) {
     app.get('/', (req, res) => {
