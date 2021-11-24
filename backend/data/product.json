@@ -1,15 +1,97 @@
 [
     {
-        "name":"iphone 12",
-        "price":8999.99,
-        "description":"this a laster iphone product",
+        "name":"iphone 13 - Apple",
+        "price":9999.99,
+        "description":"The iPhone 13 mini display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle. When measured as a standard rectangular shape, the screen is 5.42 inches diagonally (actual viewable area is less).",
         "rating": 5,
         "images": [{
             "public_id":"dfafj",
-            "url":"fdafjdofs"
+            "url":"https://img12.360buyimg.com/n7/jfs/t1/119985/18/22780/334055/618cd189E1954b0f3/38071efc83239552.png"
+        }, {
+            "public_id":"dfafj3",
+            "url": "https://img12.360buyimg.com/n7/jfs/t1/438/6/3740/133714/5b997c14E22eaeb4d/12c465f243e8110f.jpg"
+        }
+        ],
+        "category": "Electronics",
+        "seller": "Amazon",
+        "stock": 10,
+        "numOfReviews" : 10,
+        "review": []
+    },
+    {
+        "name":"iphone 11",
+        "price":8999.99,
+        "description":"Ceramic Shield front Glass back and aluminum design",
+        "rating": 5,
+        "images": [{
+            "public_id":"dfafj",
+            "url":"https://img13.360buyimg.com/n7/jfs/t1/218411/1/5560/173014/619ceb27Eb0992438/cbcd5f23648e43a5.jpg"
         }],
         "category": "Electronics",
         "seller": "Amazon",
+        "stock": 20,
+        "numOfReviews" : 10,
+        "review": []
+    },
+    {
+        "name":"iphone X",
+        "price":7999.99,
+        "description":"Liquid Retina HD display 6.1‑inch (diagonal) all-screen LCD Multi-Touch display with IPS technology 1792‑by‑828‑pixel resolution at 326 ppi 1400:1 contrast ratio (typical) True Tone displa Wide color display (P3)",
+        "rating": 5,
+        "images": [{
+            "public_id":"dfafj",
+            "url":"https://img13.360buyimg.com/n7/jfs/t1/168936/19/24550/198351/619cf71fEccff40c1/9150854c9b6aa345.jpg"
+        }],
+        "category": "Electronics",
+        "seller": "Amazon",
+        "stock": 30,
+        "numOfReviews" : 10,
+        "review": []
+    },
+    {
+        "name":"iphone 8",
+        "price":5999.99,
+        "description":"From HK$8,499 before trade‑in1",
+        "rating": 5,
+        "images": [{
+            "public_id":"dfafj",
+            "url":"https://img14.360buyimg.com/n7/jfs/t1/1468/11/3377/138213/5b997bf3Eda5b24a4/0ace3ed19582dbe6.jpg"
+        }],
+        "category": "Electronics",
+        "seller": "Amazon",
+        "stock": 30,
+        "numOfReviews" : 10,
+        "review": []
+    },
+    {
+        "name":"iphone 7",
+        "price":4999.99,
+        "description":"The 7 Ceramic Shield front Glass back and aluminum design",
+        "rating": 4,
+        "images": [{
+            "public_id":"dfafj",
+            "url":"https://img10.360buyimg.com/n7/jfs/t1/193180/30/6917/280159/60bda79dE8817bee5/0cc6060def2939fa.png"
+        }],
+        "category": "Second Hand",
+        "seller": "Amazon",
+        "stock": 3,
+        "numOfReviews" : 10,
+        "review": []
+    },
+    {
+        "name":"Fresh Apple",
+        "price":5.99,
+        "description":"Fresh Apple",
+        "rating": 4,
+        "images": [{
+            "public_id":"dfafj",
+            "url":"https://media.istockphoto.com/photos/harvested-red-apples-in-a-basket-picture-id1255426019?b=1&k=20&m=1255426019&s=170667a&w=0&h=D5R-YqgwAoBdeUpfwVOVxGRdjx9PQKANdL1P58MQyF8="
+        },{
+            "public_id":"dfafwqqj",
+            "url": "https://media.istockphoto.com/photos/apples-in-wood-boxes-picture-id147090178?k=20&m=147090178&s=612x612&w=0&h=30SC7TPkFeBDrBwHTysJvx5pqzmD9cVTx_ILVnooVCE="
+        }],
+        "category": "Food",
+        "seller": "Tao Bao",
         "stock": 3,
         "numOfReviews" : 10,
         "review": []

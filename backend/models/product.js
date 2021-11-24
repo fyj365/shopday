@@ -46,7 +46,8 @@ const productSchema = new mongoose.Schema({
                 'Food',
                 'Books',
                 'Clothes',
-                'Beauty/Health'
+                'Beauty/Health',
+                'Second Hand'
             ],
             message: 'please select correct category for this product'
         }
@@ -89,7 +90,7 @@ const productSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
-        required: true
+        required: false
     },
     createdAt: {
         type: Date,

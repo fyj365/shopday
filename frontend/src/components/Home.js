@@ -21,7 +21,7 @@ const Home = ( {match }) => {
         "Electronics",
         "Food",
         "Drinks",
-        "Old"
+        "Second Hand"
     ]
     const alert = useAlert();
 
