@@ -34,7 +34,10 @@ nav {
 #search_btn {
   background-color: #febd69;
 }
-
+.navbar-brand img {
+  width: 50px;
+  border-radius: 5px;
+}
 .input-group {
   width: 90%;
   margin-right: 35%;
