@@ -1,3 +1,6 @@
+## Demonstration
+https://shopdayhk.herokuapp.com/
+
 ## MongoDB, Express, Reactjs, Nodejs
 
 set up the environment 
