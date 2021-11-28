@@ -79,7 +79,7 @@ const Payment = ({history}) => {
         }
 
         if(res.error) {
-           error.alert(res.error.message)
+           error.alert(res.error.response.data.errMessage)
            document.querySelector('#pay_btn').disabled = false;
 
         } else{ 
