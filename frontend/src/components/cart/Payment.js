@@ -77,9 +77,10 @@ const Payment = ({history}) => {
         if (!stripe || !elements) {
           return;
         }
-
+        console.log(res.data.client_secret)
+        
         if(res.error) {
-           error.alert(res.error.response.data.errMessage)
+           error.alert(res.error.message)
            document.querySelector('#pay_btn').disabled = false;
 
         } else{ 
