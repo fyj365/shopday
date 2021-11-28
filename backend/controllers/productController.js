@@ -66,7 +66,6 @@ exports.deleteProduct  = CatchAsynErrors (async (req, res, next) => {
         }
         await Product.findByIdAndDelete(req.params.id);
         return res.status(200).json({success: true, message: 'product deleted' }) 
-
 })
 
 // create new review => /api/v1/review

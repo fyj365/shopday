@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const {isAuthenticatedUser} = require('../middlewares/auth');
-const {activePayment, sendStripeAPIkey} = require('../controllers/paymeController')
+const {activePayment, sendStripeAPIkey} = require('../controllers/paymentController')
 
 router.route('/pay').post(isAuthenticatedUser, activePayment)
 router.route('/apikey').get(isAuthenticatedUser, sendStripeAPIkey)

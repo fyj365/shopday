@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 import './App.css'
 import Header from './components/layout/Header'
@@ -23,25 +22,12 @@ import ConfirmOrder from './components/cart/ConfirmOrder'
 import Payment from './components/cart/Payment'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
+import Success from './components/cart/Success';
 function App() {
+  const stripePromise = loadStripe('pk_test_51Jyw9NDMBgjKJmCnFSpPu8975Sg8JgyGzuhAjSsSffeiy2KTvITYj6gjSfgnK4LVhLkZgweneQ5xby5Thp518xbR00gvZZ1bP6');
 
-  const [stripeApikey, setStripeApiKey] = useState('')
-  const stripeApikeyB = 'pk_test_51Jyw9NDMBgjKJmCnFSpPu8975Sg8JgyGzuhAjSsSffeiy2KTvITYj6gjSfgnK4LVhLkZgweneQ5xby5Thp518xbR00gvZZ1bP6'
   useEffect(() => {
     store.dispatch(loadUser())
-    try{
-      async function getStripApiKey() {
-        const { data } = await axios.get('/api/v1/apikey');
-  
-        setStripeApiKey(data.stripeAPIkey)
-      }
-  
-      getStripApiKey();
-      console.log(stripeApikey)
-    } catch (e) {
-      console.log(e.message)
-    }
-
 
   })
   
@@ -60,15 +46,13 @@ function App() {
           <Route path="/cart" component={Cart} />
           <ProtectedRoute path="/shipping" component={Shipping} />
           <ProtectedRoute path="/confirmOrder" component={ConfirmOrder} />
-          {/* {stripeApikeyB && 
-            <Elements stripe={loadStripe(stripeApikeyB)} >
-                <ProtectedRoute path="/payment" component={Payment} />
-            </Elements>
-          } */}
-           <ProtectedRoute path="/payment" component={Payment} />
           <ProtectedRoute path="/me" component={Profile} exact/> 
           <ProtectedRoute path="/me/update" component={EditProfile} exact />
           <ProtectedRoute path="/password/update" component={UpdatePassword} />
+          <Elements stripe={stripePromise} >
+                <ProtectedRoute path="/payment" component={Payment} />
+          </Elements> 
+          <ProtectedRoute path="/success" component={Success} />
         </div>
         <Footer />
       </div>
