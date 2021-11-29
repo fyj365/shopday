@@ -9,6 +9,7 @@ const OrderDetails = ({match}) => {
     const dispatch = useDispatch()
     const { loading, error, orders} = useSelector(state => state.myOrders)
     const { user } = useSelector(state => state.user)
+    const { shippingInfo, paymentInfo } = orders
     console.log('2', orders)
 
     useEffect(() => {
@@ -36,7 +37,7 @@ const OrderDetails = ({match}) => {
 
                     <h4 className="mb-4">Shipping Info</h4>
                     <p><b>Name:</b> {user.name}</p>
-                    <p><b>Phone:</b> {orders.shippingInfo.phoneNo}</p>
+                    <p><b>Phone:</b> {shippingInfo.phoneNo}</p>
                     <p className="mb-4"><b>Address:</b> {orders.shippingInfo.address} , {orders.shippingInfo.city} , {orders.shippingInfo.country}</p>
                     <p><b>Amount:</b> ${orders.totalPrice}</p>
 

@@ -12,7 +12,7 @@ import {
 } from '@stripe/react-stripe-js'
 import axios from 'axios'
 import {createOrder, clearErrors} from '../../actions/orderActions'
-
+import {removeAllItemsFromCart} from '../../actions/cartActions'
 const Payment = ({history}) => {
   const elements = useElements();
     const stripe = useStripe();
@@ -78,7 +78,7 @@ const Payment = ({history}) => {
           return;
         }
         console.log(res.data.client_secret)
-        
+
         if(res.error) {
            error.alert(res.error.message)
            document.querySelector('#pay_btn').disabled = false;
@@ -103,6 +103,7 @@ const Payment = ({history}) => {
                 id: result.paymentIntent.id,
                 status: result.paymentIntent.status
               }
+              dispatch(removeAllItemsFromCart())
               dispatch(createOrder(orderData))
               history.push('/success')
             }
