@@ -1,6 +1,9 @@
 ## Demonstration
 https://shopdayhk.herokuapp.com/
 
+test credit card: 4242424242424242
+test doc: https://stripe.com/docs/testing
+
 ## MongoDB, Express, Reactjs, Nodejs
 
 set up the environment 
