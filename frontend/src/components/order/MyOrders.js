@@ -20,6 +20,7 @@ const MyOrders = () => {
     }, [dispatch, Alert, error])
     return (
         <Fragment>
+
             <MetaData title='My Orders'/>
             {loading ? <Loader /> : (
                 <Fragment>
@@ -44,13 +45,12 @@ const MyOrders = () => {
                                             <tr key={order._id}>
                                             <th scope="row">{order._id}</th>
                                             <td>{order.orderItems.length}</td>
-                                            <td>{order.totalPrice.toFixed(2)}</td>
-                                            <td>{order.createdAt}</td>
+                                            <td>${order.totalPrice.toFixed(2)}</td>
+                                            <td>{(order.createdAt).split('T')[0]}</td>
                                             <td>{order.orderStatus}</td>
-                                            <td><Link to={`/order/${order._id}`} className=" btn btn-primary mt-1">view</Link></td>
+                                            <td><Link to={`/order/${order._id}`} className=" btn btn-primary mt-1">VIEW</Link></td>
                                             </tr>
                                         ))}
-
                                     </tbody>
                                     </table>
                                 </div>

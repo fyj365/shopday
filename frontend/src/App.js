@@ -23,6 +23,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import Success from './components/cart/Success';
 import MyOders from './components/order/MyOrders'
+import OrderDetails from './components/order/OrderDetails';
 
 function App() {
   const stripePromise = loadStripe('pk_test_51Jyw9NDMBgjKJmCnFSpPu8975Sg8JgyGzuhAjSsSffeiy2KTvITYj6gjSfgnK4LVhLkZgweneQ5xby5Thp518xbR00gvZZ1bP6');
@@ -55,7 +56,7 @@ function App() {
           </Elements> 
           <ProtectedRoute path="/success" component={Success} />
           <ProtectedRoute path="/orders" component={MyOders} />
-
+          <ProtectedRoute path="/order/:id" component={OrderDetails} />
         </div>
         <Footer />
       </div>
