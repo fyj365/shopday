@@ -75,8 +75,8 @@ const OrderDetails = ({match}) => {
                             <p>{item.quantity} Piece(s)</p>
                         </div>
                     </div>
-            </div>
-            <hr />
+                    </div>
+                    <hr />
                         </Fragment>
 
                     ))}

@@ -24,10 +24,14 @@ app.use('/api/v1', users);
 app.use('/api/v1', orders);
 app.use('/api/v1', payment)
 
+const root = require("path").join(__dirname, '../frontend/build');
+app.use(express.static(root));
 if(process.env.NODE_ENV == 'PRODUCTION' ) {
-    app.get('/', (req, res) => {
-        app.use(express.static(path.join(__dirname, '../frontend/build')))
-        res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+    app.get('*', (req, res) => {
+        // app.use(express.static(path.join(__dirname, '../frontend/build')))
+        // res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+        res.sendFile("index.html", {root})
+
     })
 }
 
