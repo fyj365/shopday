@@ -26,7 +26,7 @@ const MyOrders = () => {
                 <Fragment>
                 <h2 className="mt-5"> My Orders</h2>
                     {
-                        ( !orders || orders.length === 0) ? <h2 className="text-center"> You don't have any order</h2> : (
+                        (!orders || !orders.length) ? <h2 className="text-center"> You don't have any order</h2> : (
                             <Fragment>
                                 <div className="row">
                                     <table className="table table-striped">
@@ -41,7 +41,7 @@ const MyOrders = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {orders.map(order => (
+                                        {orders && orders.map(order => (
                                             <tr key={order._id}>
                                             <th scope="row">{order._id}</th>
                                             <td>{order.orderItems.length}</td>

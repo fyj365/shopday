@@ -9,7 +9,7 @@ const OrderDetails = ({match}) => {
     const dispatch = useDispatch()
     const { loading, error, orders} = useSelector(state => state.myOrders)
     const { user } = useSelector(state => state.user)
-    const { shippingInfo, paymentInfo } = orders
+    const { shippingInfo, paymentInfo, orderItems } = orders
     console.log('2', orders)
 
     useEffect(() => {
@@ -37,24 +37,24 @@ const OrderDetails = ({match}) => {
 
                     <h4 className="mb-4">Shipping Info</h4>
                     <p><b>Name:</b> {user.name}</p>
-                    <p><b>Phone:</b> {shippingInfo.phoneNo}</p>
-                    <p className="mb-4"><b>Address:</b> {orders.shippingInfo.address} , {orders.shippingInfo.city} , {orders.shippingInfo.country}</p>
+                    <p><b>Phone:</b> {shippingInfo && shippingInfo.phoneNo}</p>
+                    <p className="mb-4"><b>Address:</b> {shippingInfo && shippingInfo.address} , {shippingInfo && shippingInfo.city} , {shippingInfo && shippingInfo.country}</p>
                     <p><b>Amount:</b> ${orders.totalPrice}</p>
 
                     <hr />
 
                     <h4 className="my-4">Payment</h4>
-                    <p className="greenColor" ><b>{orders.paymentInfo.status}</b></p>
+                    <p className="greenColor" ><b>{paymentInfo && paymentInfo.status}</b></p>
 
 
                     <h4 className="my-4">Order Status:</h4>
-                    <p className='greenColor' ><b>{orders.orderStatus}</b></p>
+                    <p className='greenColor' ><b>{orders && orders.orderStatus}</b></p>
 
 
                     <h4 className="my-4">Order Items:</h4>
 
                     <hr />
-                    {orders.orderItems.map(item => (
+                    {orderItems && orderItems.map(item => (
                         <Fragment key={item._id}>
                     <div className="cart-item my-1">
                     <div className="row my-5">
