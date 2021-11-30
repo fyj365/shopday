@@ -7,10 +7,9 @@ import MetaData from '../layout/MetaData'
 
 const OrderDetails = ({match}) => {
     const dispatch = useDispatch()
-    const { loading, error, orders} = useSelector(state => state.myOrders)
+    const { loading, error, order} = useSelector(state => state.orderDetail)
     const { user } = useSelector(state => state.user)
-    const { shippingInfo, paymentInfo, orderItems } = orders
-    console.log('2', orders)
+    const { shippingInfo, paymentInfo, orderItems } = order
 
     useEffect(() => {
 
@@ -20,26 +19,25 @@ const OrderDetails = ({match}) => {
         
         dispatch(getMyOrderDetails(match.params.id))
 
-
-    }, [dispatch, error, match.params.id])
+    },[dispatch, error, match.params.id])
     return (
         <Fragment>
             <MetaData title={'Order Details'}/>
         {loading ? <Loader /> : (
             <Fragment>
                 {
-                    orders && (
+                    order && (
                         <Fragment>
                 <div className="row d-flex justify-content-between">
                 <div className="col-12 col-lg-8 mt-5 order-details">
 
-                    <h1 className="my-5">Order #{orders._id}</h1>
+                    <h1 className="my-5">Order #{order._id}</h1>
 
                     <h4 className="mb-4">Shipping Info</h4>
                     <p><b>Name:</b> {user.name}</p>
                     <p><b>Phone:</b> {shippingInfo && shippingInfo.phoneNo}</p>
                     <p className="mb-4"><b>Address:</b> {shippingInfo && shippingInfo.address} , {shippingInfo && shippingInfo.city} , {shippingInfo && shippingInfo.country}</p>
-                    <p><b>Amount:</b> ${orders.totalPrice}</p>
+                    <p><b>Amount:</b> ${order.totalPrice}</p>
 
                     <hr />
 
@@ -48,7 +46,7 @@ const OrderDetails = ({match}) => {
 
 
                     <h4 className="my-4">Order Status:</h4>
-                    <p className='greenColor' ><b>{orders && orders.orderStatus}</b></p>
+                    <p className='greenColor' ><b>{order && order.orderStatus}</b></p>
 
 
                     <h4 className="my-4">Order Items:</h4>
@@ -93,4 +91,4 @@ const OrderDetails = ({match}) => {
     )
 }
 
-export default OrderDetails
+export default React.memo(OrderDetails)

@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { productsReducer, productDetailsReducer } from './reducers/productReducers'
 import { authReducer, userReducer, resetPasswrodReducer } from './reducers/userReducers'
 import { cartReducer} from './reducers/cartReducers'
-import { newOrderReducer, myOrdersReducer} from './reducers/orderReducers'
+import { newOrderReducer, myOrdersReducer, OrderDetailsReducer} from './reducers/orderReducers'
 
 const reducer = combineReducers({
     products: productsReducer,
@@ -14,7 +14,8 @@ const reducer = combineReducers({
     resetPassword: resetPasswrodReducer,
     cart: cartReducer,
     order: newOrderReducer,
-    myOrders: myOrdersReducer
+    myOrders: myOrdersReducer,
+    orderDetail: OrderDetailsReducer
 })
 
 let initalState = {
