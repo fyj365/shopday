@@ -47,7 +47,7 @@ export const clearErrors = () => async (dispatch) => {
     dispatch({type: CLEAR_ERRORS})
 }
 // register user
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (name, email, password, avatar) => async (dispatch) => {
     try{
         dispatch({type: REGISTER_REQUEST})
         const config = {
@@ -55,7 +55,7 @@ export const register = (name, email, password) => async (dispatch) => {
                 'Content-Type' : 'application/json'
             }
         }
-        const { data } = await axios.post('/api/v1/register', { name, email, password }, config)
+        const { data } = await axios.post('/api/v1/register', { name, email, password, avatar }, config)
         dispatch({ type: REGISTER_SUCCESS, payload: data.user })
     }catch(error){
         dispatch({type: REGISTER_FAIL, payload: error.response.data.errMessage})
@@ -83,7 +83,7 @@ export const logout = () => async (dispatch) => {
     }
 }
 // update user profile
-export const updateProfile = (name, email, password) => async (dispatch) => {
+export const updateProfile = (name, email, avatar) => async (dispatch) => {
     try{
         dispatch({type: UPDATE_PROFILE_REQUEST})
         const config = {
@@ -91,7 +91,7 @@ export const updateProfile = (name, email, password) => async (dispatch) => {
                 'Content-Type' : 'application/json'
             }
         }
-        const { data } = await axios.put('/api/v1/me/update', { name, email, password }, config)
+        const { data } = await axios.put('/api/v1/me/update', { name, email, avatar }, config)
         dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.success })
     }catch(error){
         dispatch({type: UPDATE_PROFILE_FAIL, payload: error.response.data.errMessage})

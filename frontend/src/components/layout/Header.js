@@ -11,7 +11,6 @@ const Header = () => {
     const dispatch = useDispatch()
     const {user, loading } = useSelector(state => state.user)
     const {cartItems } = useSelector(state => state.cart)
-
     const  logoutHandler = () => {
         dispatch(logout());
         alert.success('logout successfully');
@@ -39,6 +38,7 @@ const Header = () => {
                         {user  ? 
                         <div className="ml-3 dropdown d-inline"> 
                             <Link to="#!"className="btn dropdown-toggle text-white mr-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <img src={user.avatar && user.avatar.url} width={30} alt={user.name} className="rounded mr-2"/>
                                             <span>{user && user.name}</span>
                             </Link>
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">

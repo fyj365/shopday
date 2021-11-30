@@ -5,20 +5,31 @@ import {useDispatch, useSelector } from 'react-redux'
 
 import { register, clearErrors } from '../../actions/UserActions'
 
-
 const Register = ({history}) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password,  setPassword] = useState('')
+    const [avatar, setAvatar] = useState('/images/default_avatar.jpg')
     const alert = useAlert()
     const dispatch = useDispatch()
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(register(name, email, password))
+        dispatch(register(name, email, password, avatar))
     }
     const {isAuthenticated, error, loading } = useSelector(state => state.user)
-
+    const fileHandler = (e) => {
+        // setAvatar(URL.createObjectURL(e.target.files[0]))
+        let reader = new FileReader();
+        let file = e.target.files[0]
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            setAvatar(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
     useEffect(() => {
         if(isAuthenticated) {
             history.push('/')
@@ -78,9 +89,9 @@ const Register = ({history}) => {
                       <div>
                           <figure className='avatar mr-3 item-rtl'>
                               <img
-                                  src=""
+                                  src={avatar}
                                   className='rounded-circle'
-                                  alt="avatar"
+                                  alt="avatar preview"
                               />
                           </figure>
                       </div>
@@ -90,6 +101,7 @@ const Register = ({history}) => {
                               name='avatar'
                               className='custom-file-input'
                               id='customFile'
+                              onChange={fileHandler}
                           />
                           <label className='custom-file-label' htmlFor='customFile'>
                               Choose Avatar

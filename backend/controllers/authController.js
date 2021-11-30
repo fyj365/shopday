@@ -4,16 +4,21 @@ const catchAsyncError = require('../middlewares/catchAsynErrors');
 const sendToken = require('../utils/jwtToken');
 const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
+const cloudinary = require('cloudinary').v2;
+
 //Register a user => /api/v1/register
 exports.registerUser = catchAsyncError( async (req, res, next) => {
+
     const {name, email, password} = req.body;
+    const result = await cloudinary.uploader.upload(req.body.avatar, {folder: 'avatars', width: 150, crop: "scale"}, function(error, result){console.log(result, error)})
+
     const user =  await User.create({
         name,
         email,
         password,
         avatar: {
-            public_id: 'public id',
-            url: 'url'
+            public_id: result.public_id,
+            url: result.secure_url
         }
     });
     sendToken(user, 200, res)
@@ -130,9 +135,15 @@ exports.updatePassword = catchAsyncError( async (req, res, next) => {
 
 // Update user profile => /api/v1/me/update
 exports.updateProfile = catchAsyncError( async (req, res, next) => {
+
+    const result = await cloudinary.uploader.upload(req.body.avatar, {folder: 'avatars', width: 150, crop: "scale"}, function(error, result){console.log(result, error)})
     const newUserData = {
         name: req.body.name,
-        email: req.body.email
+        email: req.body.email,
+        avatar: {
+            public_id: result.public_id,
+            url: result.secure_url
+        }
     }
     // update avatar: TODO
     const user = await User.findByIdAndUpdate(req.user.id, newUserData, {

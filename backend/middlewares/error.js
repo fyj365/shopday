@@ -7,7 +7,7 @@ module.exports = (err, req, res, next) => {
             success: false,
             error: err.statusCode,
             stack: err.stack,
-            errMessage: err.message,
+            errMessage: err.message + "dev",
         })
     }
     if(process.env.NODE_ENV == 'PRODUCTION') {
@@ -41,7 +41,7 @@ module.exports = (err, req, res, next) => {
         }
         res.status(error.statusCode).json({
             success: false,
-            errMessage: error.message || 'Internal Error',
+            errMessage: error.message + "prod"|| 'Internal Error',
         })
     }
 }

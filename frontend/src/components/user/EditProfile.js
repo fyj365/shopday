@@ -10,6 +10,7 @@ const EditProfile = ({ history }) => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [avatar, setAvatar] = useState('')
 
     const alert = useAlert()
     const dispatch = useDispatch()
@@ -21,6 +22,7 @@ const EditProfile = ({ history }) => {
         if(user) {
             setName(user.name)
             setEmail(user.email)
+            setAvatar(user.avatar.url)
         }
         if(error) {
             alert.error(error)
@@ -37,7 +39,19 @@ const EditProfile = ({ history }) => {
 
     const submitHandler  = (e) => {
         e.preventDefault();
-        dispatch(updateProfile(name, email));
+        dispatch(updateProfile(name, email, avatar));
+
+    }
+    const fileHander = (e) => {
+        let file = e.target.files[0]
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            setAvatar(reader.result)
+        };
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
 
     }
     return (
@@ -78,7 +92,7 @@ const EditProfile = ({ history }) => {
                                 <div>
                                     <figure className='avatar mr-3 item-rtl'>
                                         <img
-                                            src=''
+                                            src={avatar}
                                             className='rounded-circle'
                                             alt='Avatar Preview'
                                         />
@@ -90,6 +104,7 @@ const EditProfile = ({ history }) => {
                                         name='avatar'
                                         className='custom-file-input'
                                         id='customFile'
+                                        onChange={fileHander}
                                     />
                                     <label className='custom-file-label' htmlFor='customFile'>
                                         Choose Avatar

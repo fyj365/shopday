@@ -1,6 +1,13 @@
 const app  = require('./app')
 const connectDatabase = require('./config/database')
 const dotenv = require('dotenv')
+var cloudinary = require('cloudinary').v2;
+cloudinary.config({ 
+    cloud_name: 'dtij13bgx', 
+    api_key: '455372113137732', 
+    api_secret: 'tEnR13jMls9DNjtd2Biw3s6EpdE',
+    secure: true
+  });
 
 // handle uncaught exceptions
 // process.on('uncaughtException', err => {
