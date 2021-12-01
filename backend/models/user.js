@@ -24,11 +24,13 @@ const userSchema = new mongoose.Schema({
     avatar: {
         public_id: {
             type: String,
-            required: true
+            required: false,
+            default: ''
         },
         url: {
             type: String,
-            required: true
+            required: false,
+            default: ''
         }
     },
     role: {

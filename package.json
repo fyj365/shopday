@@ -8,7 +8,7 @@
   },
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node backend/server.js",
     "dev": "set NODE_ENV=DEVELOPMENT & nodemon backend/server",
     "prod": "set NODE_ENV=PRODUCTION & nodemon backend/server",
@@ -36,5 +36,8 @@
     "react-select-country-list": "^2.2.3",
     "stripe": "^8.191.0",
     "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "jest": "^27.4.2"
   }
 }

@@ -9,7 +9,8 @@ const Register = ({history}) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password,  setPassword] = useState('')
-    const [avatar, setAvatar] = useState('/images/default_avatar.jpg')
+    const [avatar, setAvatar] = useState('')
+    const [avatarPreview, setAvatarPreview] = useState('/images/default_avatar.jpg')
     const alert = useAlert()
     const dispatch = useDispatch()
 
@@ -18,17 +19,19 @@ const Register = ({history}) => {
         dispatch(register(name, email, password, avatar))
     }
     const {isAuthenticated, error, loading } = useSelector(state => state.user)
+ 
+
     const fileHandler = (e) => {
-        // setAvatar(URL.createObjectURL(e.target.files[0]))
-        let reader = new FileReader();
-        let file = e.target.files[0]
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-            setAvatar(reader.result)
-        };
-        reader.onerror = function (error) {
-            console.log('Error: ', error);
-        };
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setAvatarPreview(reader.result)
+                setAvatar(reader.result)
+            }
+        }
+        reader.readAsDataURL(e.target.files[0])
+
     }
     useEffect(() => {
         if(isAuthenticated) {
@@ -89,7 +92,7 @@ const Register = ({history}) => {
                       <div>
                           <figure className='avatar mr-3 item-rtl'>
                               <img
-                                  src={avatar}
+                                  src={avatarPreview}
                                   className='rounded-circle'
                                   alt="avatar preview"
                               />

@@ -15,7 +15,7 @@ const Profile = () => {
             <div className="row justify-content-around mt-5 user-info">
                 <div className="col-12 col-md-3">
                     <figure className='avatar avatar-profile'>
-                        <img className="rounded-circle img-fluid" src={user.avatar.url} alt={user.name} />
+                        <img className="rounded-circle img-fluid" src={user.avatar.url||'/images/default_avatar.jpg'} alt={user.name} />
                     </figure>
                     <Link to="/me/update" id="edit_profile" className="btn btn-primary btn-block my-5">
                         Edit Profile

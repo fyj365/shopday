@@ -92,7 +92,7 @@ const EditProfile = ({ history }) => {
                                 <div>
                                     <figure className='avatar mr-3 item-rtl'>
                                         <img
-                                            src={avatar}
+                                            src={avatar || '/images/default_avatar.jpg'}
                                             className='rounded-circle'
                                             alt='Avatar Preview'
                                         />
