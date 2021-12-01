@@ -37,7 +37,5 @@
     "stripe": "^8.191.0",
     "validator": "^13.7.0"
   },
-  "devDependencies": {
-    "jest": "^27.4.2"
-  }
+  "devDependencies": {}
 }
