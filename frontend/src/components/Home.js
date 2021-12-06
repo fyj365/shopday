@@ -23,6 +23,13 @@ const Home = ( {match }) => {
         "Drinks",
         "Second Hand"
     ]
+    function getFormattedDate() {
+        var date = new Date();
+        var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    
+        return str;
+    }
+    const [currentTime, setCurrentTime] = useState(getFormattedDate())
     const alert = useAlert();
 
     const dispatch = useDispatch();
@@ -36,6 +43,10 @@ const Home = ( {match }) => {
            return alert.error(error)
         }
         dispatch(getProducts(keyword, currentPage, price, category, rating));
+        const interval = setInterval(()=> setCurrentTime(getFormattedDate()), 1000)
+        return () => {
+            clearInterval(interval);
+        }
 
     }, [dispatch, alert, error, keyword, currentPage, price, category, rating])
 
@@ -48,8 +59,10 @@ const Home = ( {match }) => {
             {loading? <Loader />:(
             <Fragment>
                 <MetaData title={'Buy best product online'}/>
-                <h1 id="products_heading">Latest Products</h1>
+                <h3 className="d-flex justify-content-end mt-2">{currentTime}</h3>
+                <h1 className="d-flex" id="products_heading">Latest Products</h1>
                  <section id="products" className="container mt-5">
+
                     <div className="row">
                      {keyword ?(
                          <Fragment>
