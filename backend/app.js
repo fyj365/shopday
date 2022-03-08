@@ -34,17 +34,17 @@ const twilio_authToken = process.env.twilio_authToken
 const twilioClient = new twilio(twilio_accountId, twilio_authToken);
 
 //mount router messages
-app.use('/messages', (req, res, next) => {
+app.use('/messages', async (req, res, next) => {
     //send whatsapp message 
     console.log(req.body)
-    twilioClient.messages
+    await twilioClient.messages
     .create({
         body: `Hello from Node, received: ${req.body.Body} at: ${new Date()}.  ${JSON.stringify(req.body)}`,
         to: `whatsapp:${req.body.To}`, // Text this number
         from: `whatsapp:${req.body.From}`, // From a valid Twilio number
     })
     .then((message) => console.log('sent message id:' + message.sid));
-    res.status(200).send({success: true})
+    res.status(200).send({success: true, message: JSON.stringify(req.body)})
     next()
 })
 //import all routes
