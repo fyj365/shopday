@@ -32,6 +32,11 @@ const twilio_accountId = process.env.twilio_accountId
 const twilio_authToken = process.env.twilio_authToken
 
 const twilioClient = new twilio(twilio_accountId, twilio_authToken);
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+
+
+const response = new MessagingResponse();
+const responseMessage = response.message();
 
 //mount router messages
 app.use('/messages', async (req, res, next) => {
@@ -44,7 +49,13 @@ app.use('/messages', async (req, res, next) => {
         from: `whatsapp:${req.body.From}`, // From a valid Twilio number
     })
     .then((message) => console.log('sent message id:' + message.sid));
-    res.status(200).send({success: true, message: JSON.stringify(req.body)})
+  
+    responseMessage.body(`Hello World!${JSON.stringify(req.body)}`);
+    console.log(responseMessage.toString());
+
+    response.redirect('https://demo.twilio.com/welcome/sms/');
+    res.setHeader('content-type', 'text/xml');
+    res.send(responseMessage);
     next()
 })
 //import all routes
