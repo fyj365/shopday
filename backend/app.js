@@ -20,6 +20,33 @@ app.use(cookieParser());
 
 if (process.env.NODE_ENV === undefined) require('dotenv').config({ path: 'backend/config/config.env' })
 
+app.use(express.urlencoded({extended: false}))
+
+const twilio = require('twilio')
+const dotenv = require('dotenv')
+dotenv.config({path: 'backend/config/config.env'})
+
+
+//twilio setting
+const twilio_accountId = process.env.twilio_accountId
+const twilio_authToken = process.env.twilio_authToken
+
+const twilioClient = new twilio(twilio_accountId, twilio_authToken);
+
+//mount router messages
+app.use('/messages', (req, res, next) => {
+    //send whatsapp message 
+    console.log(req.body)
+    twilioClient.messages
+    .create({
+        body: `Hello from Node, received: ${req.body.Body} at: ${new Date()}.  ${JSON.stringify(req.body)}`,
+        to: `whatsapp:${req.body.To}`, // Text this number
+        from: `whatsapp:${req.body.From}`, // From a valid Twilio number
+    })
+    .then((message) => console.log('sent message id:' + message.sid));
+
+    next()
+})
 //import all routes
 const products = require('./routes/product');
 const users = require('./routes/auth');
