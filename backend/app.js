@@ -44,7 +44,7 @@ app.use('/messages', (req, res, next) => {
         from: `whatsapp:${req.body.From}`, // From a valid Twilio number
     })
     .then((message) => console.log('sent message id:' + message.sid));
-
+    res.status(200).send({success: true})
     next()
 })
 //import all routes
