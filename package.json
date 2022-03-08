@@ -35,6 +35,7 @@
     "react-js-pagination": "^3.0.3",
     "react-select-country-list": "^2.2.3",
     "stripe": "^8.191.0",
+    "twilio": "^3.75.0",
     "validator": "^13.7.0"
   },
   "devDependencies": {}
