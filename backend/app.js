@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+const twilio = require('twilio')
 
 const cookieParser = require('cookie-parser');
 
@@ -15,6 +16,29 @@ cloudinary.config({
 });
 
 app.use(express.json());
+
+app.use(express.urlencoded({extended: false}))
+
+//twilio setting
+const twilio_accountId = process.env.twilio_accountId || `AC19cbddb8bcf9e86791064e1bcf9f7b59`
+const twilio_authToken = process.env.twilio_authToken || `86d644dd029badea57f438f9f12e12f0`
+const twilioClient = new twilio(twilio_accountId, twilio_authToken);
+
+//mount router messages
+app.use('/messages', (req, res, next) => {
+    //send whatsapp message 
+    console.log(req.body)
+    twilioClient.messages
+    .create({
+        body: `Hello from Node, received: ${req.body.Body} at: ${new Date()}.  ${JSON.stringify(req.body)}`,
+        to: `whatsapp:${req.body.To}`, // Text this number
+        from: `whatsapp:${req.body.From}`, // From a valid Twilio number
+    })
+    .then((message) => console.log('sent message id:' + message.sid));
+
+    next()
+})
+
 
 app.use(cookieParser());
 
